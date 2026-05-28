@@ -9,7 +9,7 @@ An extension of the Language-Aligned Video Object Segmentation (RVOS) framework.
 ---
 
 ## 🎥 Pipeline Demonstration
-
+https://github.com/user-attachments/assets/611fc8da-da1b-4b1d-8a08-d6cb06c8959d
 ### Input vs. Output Tracking
 | Input Video (Raw) | Output Segmentation (Tracked) |
 | :---: | :---: |
