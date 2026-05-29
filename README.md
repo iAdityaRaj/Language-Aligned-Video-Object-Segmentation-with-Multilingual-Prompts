@@ -33,13 +33,6 @@ Standard early-fusion RVOS models rely on English-only instruction bottlenecks a
 1. **Multilingual Spatial Tracking:** Modified the early-fusion pipeline to process complex Hindi text prompts. This localized text is routed through **RoBERTa Base** to drive the spatial video tracking of the **Segment Anything 2 (SAM2)** visual backbone.
 2. **Explanatory Grounding via Edge-LLM:** Integrated **Qwen2.5-1.5B-Instruct** (4-bit Quantized via HuggingFace) directly into the inference loop to provide localized explanatory reasoning for segmentation decisions without relying on external cloud APIs.
 
-## 🛠️ Engineering & Environment Sterilization (Cloud GPU Optimized)
-
-Deploying legacy multi-modal architectures in modern cloud environments presents severe dependency clashes. This repository includes custom sterilization scripts to guarantee stable execution on a single **Nvidia T4 GPU (16GB VRAM)**:
-
-* **Python 3.12 / Fairseq Survival:** The legacy `fairseq` library suffers from fatal `dataclass` mutable-default errors in modern Python. This repository utilizes custom Structure-Aware Block Patchers and a Hydra sandbox to bypass broken eager-loading loops and dynamically rebuild the configuration registry in memory.
-* **Hardware-Agnostic Routing:** Stripped legacy Apple Silicon (`mps`) hardcoding from the base paper's implementation. Built dynamic CUDA interception for HuggingFace Transformers to ensure seamless execution on Linux/Nvidia clusters.
-* **Memory-Safe Execution:** Implemented automated `ffmpeg` preprocessing to downscale input video tensors natively, preventing cross-attention matrices from exceeding VRAM limits during the forward pass.
 
 ---
 
